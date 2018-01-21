@@ -1,10 +1,10 @@
 // @flow
 
-import { List, Map } from 'immutable';
+import { Map } from 'immutable';
 import Status from './Status';
 
 export default Map({
-  failedOperations: List(),
+  failedOperations: Map(),
   userExists: false,
   getCurrentUserStatus: Status.NOT_STARTED,
   signUpStatus: Status.NOT_STARTED,

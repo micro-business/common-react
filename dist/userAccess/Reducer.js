@@ -24,11 +24,7 @@ exports.default = function () {
 
   switch (action.type) {
     case _ActionTypes2.default.USER_ACCESS_ACKNOWLEDGE_FAILED_OPERATION:
-      return state.update('failedOperations', function (failedOperations) {
-        return failedOperations.filterNot(function (operation) {
-          return operation.get('operationId') === action.payload.get('operationId');
-        });
-      });
+      return state.deleteIn('failedOperations', action.payload.get('operationId'));
 
     case _ActionTypes2.default.USER_ACCESS_GET_CURRENT_USER_SUCCEEDED:
       return state.set('getCurrentUserStatus', _Status2.default.SUCCEEDED).set('userExists', action.payload.get('userExists')).set('userInfo', action.payload.get('userInfo'));

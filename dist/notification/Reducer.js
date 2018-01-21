@@ -10,16 +10,10 @@ exports.default = function () {
 
   switch (action.type) {
     case _ActionTypes2.default.NOTIFICATION_ADD_NOTIFICATION:
-      return state.update('messages', function (messages) {
-        return messages.push(action.payload);
-      });
+      return state.setIn(['notifications', action.payload.get('id')], Map({ message: action.payload.get('message'), type: action.payload.get('type') }));
 
     case _ActionTypes2.default.NOTIFICATION_REMOVE_NOTIFICATION:
-      return state.update('messages', function (messages) {
-        return messages.filterNot(function (_) {
-          return _.get('messageId') === action.payload.get('messageId');
-        });
-      });
+      return state.deleteIn(['notifications', action.payload.get('id')]);
 
     default:
       return state;

@@ -1,6 +1,6 @@
 {
   "name": "@microbusiness/common-react",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Micro Business Common React",
   "main": "./dist/index.js",
   "scripts": {

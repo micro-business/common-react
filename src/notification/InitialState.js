@@ -1,7 +1,7 @@
 // @flow
 
-import { List, Map } from 'immutable';
+import { Map } from 'immutable';
 
 export default Map({
-  notifications: List(),
+  notifications: Map(),
 });
