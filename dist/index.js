@@ -19,18 +19,18 @@ Object.defineProperty(exports, 'AppUpdaterStatus', {
   }
 });
 
-var _messageBar = require('./messageBar');
+var _notification = require('./notification');
 
-Object.defineProperty(exports, 'MessageBarReducer', {
+Object.defineProperty(exports, 'NotificationReducer', {
   enumerable: true,
   get: function get() {
-    return _messageBar.MessageBarReducer;
+    return _notification.NotificationReducer;
   }
 });
-Object.defineProperty(exports, 'MessageType', {
+Object.defineProperty(exports, 'NotificationType', {
   enumerable: true,
   get: function get() {
-    return _messageBar.MessageType;
+    return _notification.NotificationType;
   }
 });
 

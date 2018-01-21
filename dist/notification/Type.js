@@ -6,5 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   ERROR: 0,
   WARNING: 1,
-  INFO: 2
+  INFO: 2,
+  SUCESS: 3
 };

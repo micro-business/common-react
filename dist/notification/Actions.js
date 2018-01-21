@@ -18,22 +18,22 @@ var _ActionTypes2 = _interopRequireDefault(_ActionTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function add(message, messageType) {
+function add(message, type) {
   return {
-    type: _ActionTypes2.default.MESSAGE_BAR_ADD_MESSAGE,
+    type: _ActionTypes2.default.NOTIFICATION_ADD_NOTIFICATION,
     payload: (0, _immutable.Map)({
+      id: (0, _v2.default)(),
       message: message,
-      messageType: messageType,
-      messageId: (0, _v2.default)()
+      type: type
     })
   };
 }
 
-function remove(messageId) {
+function remove(id) {
   return {
-    type: _ActionTypes2.default.MESSAGE_BAR_REMOVE_MESSAGE,
+    type: _ActionTypes2.default.NOTIFICATION_REMOVE_NOTIFICATION,
     payload: (0, _immutable.Map)({
-      messageId: messageId
+      id: id
     })
   };
 }

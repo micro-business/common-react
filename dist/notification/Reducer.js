@@ -9,12 +9,12 @@ exports.default = function () {
   var action = arguments[1];
 
   switch (action.type) {
-    case _ActionTypes2.default.MESSAGE_BAR_ADD_MESSAGE:
+    case _ActionTypes2.default.NOTIFICATION_ADD_NOTIFICATION:
       return state.update('messages', function (messages) {
         return messages.push(action.payload);
       });
 
-    case _ActionTypes2.default.MESSAGE_BAR_REMOVE_MESSAGE:
+    case _ActionTypes2.default.NOTIFICATION_REMOVE_NOTIFICATION:
       return state.update('messages', function (messages) {
         return messages.filterNot(function (_) {
           return _.get('messageId') === action.payload.get('messageId');
