@@ -1,5 +1,6 @@
 // @flow
 
+import { Map } from 'immutable';
 import ActionTypes from './ActionTypes';
 import initialState from './InitialState';
 
