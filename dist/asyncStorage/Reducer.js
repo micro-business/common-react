@@ -24,7 +24,7 @@ exports.default = function () {
 
   switch (action.type) {
     case _ActionTypes2.default.ASYNC_STORAGE_ACKNOWLEDGE_FAILED_OPERATION:
-      return state.deleteIn('failedOperations', action.payload.get('operationId'));
+      return state.deleteIn(['failedOperations', action.payload.get('operationId')]);
 
     case _ActionTypes2.default.ASYNC_STORAGE_WRITE_VALUE_SUCCEEDED:
       return state.updateIn(['writeValueOperationsStatus', action.payload.get('operationId')], _Status2.default.SUCCEEDED).setIn(['keyValues', action.payload.get('key')], action.payload.get('value'));

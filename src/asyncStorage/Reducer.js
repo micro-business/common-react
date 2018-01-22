@@ -7,7 +7,7 @@ import Status from './Status';
 export default (state = initialState, action) => {
   switch (action.type) {
   case ActionTypes.ASYNC_STORAGE_ACKNOWLEDGE_FAILED_OPERATION:
-    return state.deleteIn('failedOperations', action.payload.get('operationId'));
+    return state.deleteIn(['failedOperations', action.payload.get('operationId')]);
 
   case ActionTypes.ASYNC_STORAGE_WRITE_VALUE_SUCCEEDED:
     return state

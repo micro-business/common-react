@@ -7,7 +7,7 @@ import Status from './Status';
 export default (state = initialState, action) => {
   switch (action.type) {
   case ActionTypes.USER_ACCESS_ACKNOWLEDGE_FAILED_OPERATION:
-    return state.deleteIn('failedOperations', action.payload.get('operationId'));
+    return state.deleteIn(['failedOperations', action.payload.get('operationId')]);
 
   case ActionTypes.USER_ACCESS_GET_CURRENT_USER_SUCCEEDED:
     return state
