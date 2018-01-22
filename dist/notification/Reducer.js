@@ -10,7 +10,7 @@ exports.default = function () {
 
   switch (action.type) {
     case _ActionTypes2.default.NOTIFICATION_ADD_NOTIFICATION:
-      return state.setIn(['notifications', action.payload.get('id')], Map({ message: action.payload.get('message'), type: action.payload.get('type') }));
+      return state.setIn(['notifications', action.payload.get('id')], (0, _immutable.Map)({ message: action.payload.get('message'), type: action.payload.get('type') }));
 
     case _ActionTypes2.default.NOTIFICATION_REMOVE_NOTIFICATION:
       return state.deleteIn(['notifications', action.payload.get('id')]);
@@ -19,6 +19,8 @@ exports.default = function () {
       return state;
   }
 };
+
+var _immutable = require('immutable');
 
 var _ActionTypes = require('./ActionTypes');
 
