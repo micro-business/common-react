@@ -30,9 +30,7 @@ exports.default = function () {
       return state.set('getCurrentUserStatus', _Status2.default.SUCCEEDED).set('userExists', action.payload.get('userExists')).set('userInfo', action.payload.get('userInfo'));
 
     case _ActionTypes2.default.USER_ACCESS_GET_CURRENT_USER_FAILED:
-      return state.set('getCurrentUserStatus', _Status2.default.FAILED).set('userExists', false).remove('userInfo').update('failedOperations', function (failedOperations) {
-        return failedOperations.push(action.payload);
-      });
+      return state.set('getCurrentUserStatus', _Status2.default.FAILED).set('userExists', false).remove('userInfo').setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
     case _ActionTypes2.default.USER_ACCESS_RESET_GET_CURRENT_USER_STATUS:
       return state.set('getCurrentUserStatus', _Status2.default.NOT_STARTED);
@@ -44,9 +42,7 @@ exports.default = function () {
       return state.set('signUpStatus', _Status2.default.SUCCEEDED).set('userExists', true).set('userInfo', action.payload.get('userInfo'));
 
     case _ActionTypes2.default.USER_ACCESS_SIGNUP_WITH_USERNAME_AND_PASSWORD_FAILED:
-      return state.set('signUpStatus', _Status2.default.FAILED).set('userExists', false).remove('userInfo').update('failedOperations', function (failedOperations) {
-        return failedOperations.push(action.payload);
-      });
+      return state.set('signUpStatus', _Status2.default.FAILED).set('userExists', false).remove('userInfo').setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
     case _ActionTypes2.default.USER_ACCESS_RESET_SIGNUP_STATUS:
       return state.set('signUpStatus', _Status2.default.NOT_STARTED);
@@ -58,17 +54,13 @@ exports.default = function () {
       return state.set('signInStatus', _Status2.default.SUCCEEDED).set('userExists', true).set('userInfo', action.payload.get('userInfo'));
 
     case _ActionTypes2.default.USER_ACCESS_SIGNIN_WITH_USERNAME_AND_PASSWORD_FAILED:
-      return state.set('signInStatus', _Status2.default.FAILED).set('userExists', false).remove('userInfo').update('failedOperations', function (failedOperations) {
-        return failedOperations.push(action.payload);
-      });
+      return state.set('signInStatus', _Status2.default.FAILED).set('userExists', false).remove('userInfo').setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
     case _ActionTypes2.default.USER_ACCESS_SIGNIN_WITH_FACEBOOK_SUCCEEDED:
       return state.set('signInStatus', _Status2.default.SUCCEEDED).set('userExists', true).set('userInfo', action.payload.get('userInfo'));
 
     case _ActionTypes2.default.USER_ACCESS_SIGNIN_WITH_FACEBOOK_FAILED:
-      return state.set('signInStatus', _Status2.default.FAILED).set('userExists', false).remove('userInfo').update('failedOperations', function (failedOperations) {
-        return failedOperations.push(action.payload);
-      });
+      return state.set('signInStatus', _Status2.default.FAILED).set('userExists', false).remove('userInfo').setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
     case _ActionTypes2.default.USER_ACCESS_RESET_SIGNIN_STATUS:
       return state.set('signInStatus', _Status2.default.NOT_STARTED);

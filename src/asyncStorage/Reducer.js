@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
   case ActionTypes.ASYNC_STORAGE_WRITE_VALUE_FAILED:
     return state
       .updateIn(['writeValueOperationsStatus', action.payload.get('operationId')], Status.FAILED)
-      .update('failedOperations', failedOperations => failedOperations.push(action.payload));
+      .setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
   case ActionTypes.ASYNC_STORAGE_WRITE_VALUE_IN_PROGRESS:
     return state.updateIn(['writeValueOperationsStatus', action.payload.get('operationId')], Status.IN_PROGRESS);
@@ -34,7 +34,7 @@ export default (state = initialState, action) => {
     return state
       .updateIn(['readValueOperationsStatus', action.payload.get('operationId')], Status.FAILED)
       .deleteIn(['keyValues', action.payload.get('key')])
-      .update('failedOperations', failedOperations => failedOperations.push(action.payload));
+      .setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
   case ActionTypes.ASYNC_STORAGE_READ_VALUE_IN_PROGRESS:
     return state.updateIn(['readValueOperationsStatus', action.payload.get('operationId')], Status.IN_PROGRESS);

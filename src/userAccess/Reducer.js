@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
       .set('getCurrentUserStatus', Status.FAILED)
       .set('userExists', false)
       .remove('userInfo')
-      .update('failedOperations', failedOperations => failedOperations.push(action.payload));
+      .setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
   case ActionTypes.USER_ACCESS_RESET_GET_CURRENT_USER_STATUS:
     return state.set('getCurrentUserStatus', Status.NOT_STARTED);
@@ -39,7 +39,7 @@ export default (state = initialState, action) => {
       .set('signUpStatus', Status.FAILED)
       .set('userExists', false)
       .remove('userInfo')
-      .update('failedOperations', failedOperations => failedOperations.push(action.payload));
+      .setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
   case ActionTypes.USER_ACCESS_RESET_SIGNUP_STATUS:
     return state.set('signUpStatus', Status.NOT_STARTED);
@@ -58,7 +58,7 @@ export default (state = initialState, action) => {
       .set('signInStatus', Status.FAILED)
       .set('userExists', false)
       .remove('userInfo')
-      .update('failedOperations', failedOperations => failedOperations.push(action.payload));
+      .setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
   case ActionTypes.USER_ACCESS_SIGNIN_WITH_FACEBOOK_SUCCEEDED:
     return state
@@ -71,7 +71,7 @@ export default (state = initialState, action) => {
       .set('signInStatus', Status.FAILED)
       .set('userExists', false)
       .remove('userInfo')
-      .update('failedOperations', failedOperations => failedOperations.push(action.payload));
+      .setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
   case ActionTypes.USER_ACCESS_RESET_SIGNIN_STATUS:
     return state.set('signInStatus', Status.NOT_STARTED);

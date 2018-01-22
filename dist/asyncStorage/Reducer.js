@@ -30,9 +30,7 @@ exports.default = function () {
       return state.updateIn(['writeValueOperationsStatus', action.payload.get('operationId')], _Status2.default.SUCCEEDED).setIn(['keyValues', action.payload.get('key')], action.payload.get('value'));
 
     case _ActionTypes2.default.ASYNC_STORAGE_WRITE_VALUE_FAILED:
-      return state.updateIn(['writeValueOperationsStatus', action.payload.get('operationId')], _Status2.default.FAILED).update('failedOperations', function (failedOperations) {
-        return failedOperations.push(action.payload);
-      });
+      return state.updateIn(['writeValueOperationsStatus', action.payload.get('operationId')], _Status2.default.FAILED).setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
     case _ActionTypes2.default.ASYNC_STORAGE_WRITE_VALUE_IN_PROGRESS:
       return state.updateIn(['writeValueOperationsStatus', action.payload.get('operationId')], _Status2.default.IN_PROGRESS);
@@ -44,9 +42,7 @@ exports.default = function () {
       return state.updateIn(['readValueOperationsStatus', action.payload.get('operationId')], _Status2.default.SUCCEEDED).setIn(['keyValues', action.payload.get('key')], action.payload.get('value'));
 
     case _ActionTypes2.default.ASYNC_STORAGE_READ_VALUE_FAILED:
-      return state.updateIn(['readValueOperationsStatus', action.payload.get('operationId')], _Status2.default.FAILED).deleteIn(['keyValues', action.payload.get('key')]).update('failedOperations', function (failedOperations) {
-        return failedOperations.push(action.payload);
-      });
+      return state.updateIn(['readValueOperationsStatus', action.payload.get('operationId')], _Status2.default.FAILED).deleteIn(['keyValues', action.payload.get('key')]).setIn(['failedOperations', action.payload.get('operationId')], action.payload);
 
     case _ActionTypes2.default.ASYNC_STORAGE_READ_VALUE_IN_PROGRESS:
       return state.updateIn(['readValueOperationsStatus', action.payload.get('operationId')], _Status2.default.IN_PROGRESS);
