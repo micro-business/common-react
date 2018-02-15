@@ -1,7 +1,7 @@
 // @flow
 
 import { Map } from 'immutable';
-import uuid from 'uuid/v4';
+import cuid from 'cuid';
 import ActionTypes from './ActionTypes';
 
 export function acknowledgeFailedOperation(payload) {
@@ -15,7 +15,7 @@ export function getCurrentUser() {
   return {
     type: ActionTypes.USER_ACCESS_GET_CURRENT_USER,
     payload: Map({
-      operationId: uuid(),
+      operationId: cuid(),
     }),
   };
 }
@@ -52,7 +52,7 @@ export function signUpWithUsernameAndPassword(username: string, password: string
   return {
     type: ActionTypes.USER_ACCESS_SIGNUP_WITH_USERNAME_AND_PASSWORD,
     payload: Map({
-      operationId: uuid(),
+      operationId: cuid(),
       username,
       password,
       emailAddress,
@@ -93,7 +93,7 @@ export function signInWithUsernameAndPassword(username: string, password: string
   return {
     type: ActionTypes.USER_ACCESS_SIGNIN_WITH_USERNAME_AND_PASSWORD,
     payload: Map({
-      operationId: uuid(),
+      operationId: cuid(),
       username,
       password,
       emailAddress,
@@ -119,7 +119,7 @@ export function signInWithFacebook(scope: string, userType: ?string) {
   return {
     type: ActionTypes.USER_ACCESS_SIGNIN_WITH_FACEBOOK,
     payload: Map({
-      operationId: uuid(),
+      operationId: cuid(),
       scope,
       userType,
     }),
@@ -158,7 +158,7 @@ export function signOut() {
   return {
     type: ActionTypes.USER_ACCESS_SIGNOUT,
     payload: Map({
-      operationId: uuid(),
+      operationId: cuid(),
     }),
   };
 }

@@ -1,6 +1,6 @@
 // @flow
 
-import uuid from 'uuid/v4';
+import cuid from 'cuid';
 import ActionTypes from './ActionTypes';
 
 export function acknowledgeFailedOperation(payload) {
@@ -13,7 +13,7 @@ export function acknowledgeFailedOperation(payload) {
 export function writeValue(payload) {
   return {
     type: ActionTypes.ASYNC_STORAGE_WRITE_VALUE,
-    payload: payload.set('operationId', uuid()),
+    payload: payload.set('operationId', cuid()),
   };
 }
 
@@ -48,7 +48,7 @@ export function acknowledgeWriteValueStatus(payload) {
 export function readValue(payload) {
   return {
     type: ActionTypes.ASYNC_STORAGE_READ_VALUE,
-    payload: payload.set('operationId', uuid()),
+    payload: payload.set('operationId', cuid()),
   };
 }
 

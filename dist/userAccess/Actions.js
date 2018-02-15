@@ -30,9 +30,9 @@ exports.signOutInProgress = signOutInProgress;
 
 var _immutable = require('immutable');
 
-var _v = require('uuid/v4');
+var _cuid = require('cuid');
 
-var _v2 = _interopRequireDefault(_v);
+var _cuid2 = _interopRequireDefault(_cuid);
 
 var _ActionTypes = require('./ActionTypes');
 
@@ -51,7 +51,7 @@ function getCurrentUser() {
   return {
     type: _ActionTypes2.default.USER_ACCESS_GET_CURRENT_USER,
     payload: (0, _immutable.Map)({
-      operationId: (0, _v2.default)()
+      operationId: (0, _cuid2.default)()
     })
   };
 }
@@ -88,7 +88,7 @@ function signUpWithUsernameAndPassword(username, password, emailAddress, userTyp
   return {
     type: _ActionTypes2.default.USER_ACCESS_SIGNUP_WITH_USERNAME_AND_PASSWORD,
     payload: (0, _immutable.Map)({
-      operationId: (0, _v2.default)(),
+      operationId: (0, _cuid2.default)(),
       username: username,
       password: password,
       emailAddress: emailAddress,
@@ -129,7 +129,7 @@ function signInWithUsernameAndPassword(username, password, emailAddress) {
   return {
     type: _ActionTypes2.default.USER_ACCESS_SIGNIN_WITH_USERNAME_AND_PASSWORD,
     payload: (0, _immutable.Map)({
-      operationId: (0, _v2.default)(),
+      operationId: (0, _cuid2.default)(),
       username: username,
       password: password,
       emailAddress: emailAddress
@@ -155,7 +155,7 @@ function signInWithFacebook(scope, userType) {
   return {
     type: _ActionTypes2.default.USER_ACCESS_SIGNIN_WITH_FACEBOOK,
     payload: (0, _immutable.Map)({
-      operationId: (0, _v2.default)(),
+      operationId: (0, _cuid2.default)(),
       scope: scope,
       userType: userType
     })
@@ -194,7 +194,7 @@ function signOut() {
   return {
     type: _ActionTypes2.default.USER_ACCESS_SIGNOUT,
     payload: (0, _immutable.Map)({
-      operationId: (0, _v2.default)()
+      operationId: (0, _cuid2.default)()
     })
   };
 }

@@ -8,9 +8,9 @@ exports.remove = remove;
 
 var _immutable = require('immutable');
 
-var _v = require('uuid/v4');
+var _cuid = require('cuid');
 
-var _v2 = _interopRequireDefault(_v);
+var _cuid2 = _interopRequireDefault(_cuid);
 
 var _ActionTypes = require('./ActionTypes');
 
@@ -22,7 +22,7 @@ function add(message, type) {
   return {
     type: _ActionTypes2.default.NOTIFICATION_ADD_NOTIFICATION,
     payload: (0, _immutable.Map)({
-      id: (0, _v2.default)(),
+      id: (0, _cuid2.default)(),
       message: message,
       type: type
     })

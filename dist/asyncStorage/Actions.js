@@ -15,9 +15,9 @@ exports.readValueFailed = readValueFailed;
 exports.readValueInProgress = readValueInProgress;
 exports.acknowledgeReadValueStatus = acknowledgeReadValueStatus;
 
-var _v = require('uuid/v4');
+var _cuid = require('cuid');
 
-var _v2 = _interopRequireDefault(_v);
+var _cuid2 = _interopRequireDefault(_cuid);
 
 var _ActionTypes = require('./ActionTypes');
 
@@ -35,7 +35,7 @@ function acknowledgeFailedOperation(payload) {
 function writeValue(payload) {
   return {
     type: _ActionTypes2.default.ASYNC_STORAGE_WRITE_VALUE,
-    payload: payload.set('operationId', (0, _v2.default)())
+    payload: payload.set('operationId', (0, _cuid2.default)())
   };
 }
 
@@ -70,7 +70,7 @@ function acknowledgeWriteValueStatus(payload) {
 function readValue(payload) {
   return {
     type: _ActionTypes2.default.ASYNC_STORAGE_READ_VALUE,
-    payload: payload.set('operationId', (0, _v2.default)())
+    payload: payload.set('operationId', (0, _cuid2.default)())
   };
 }
 
